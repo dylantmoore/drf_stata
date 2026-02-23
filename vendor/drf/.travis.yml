@@ -1,0 +1,26 @@
+sudo: required
+language: R
+latex: false
+cache: packages
+
+branches:
+  only:
+    - master
+
+r_packages:
+  # build_package.R requirements.
+  - devtools
+  - testthat
+  - roxygen2
+  # Vignette requirements are installed in the `deploy` section. build
+
+matrix:
+  include:
+    - name: "drf R package"
+      before_install:
+        - cd r-package/drf
+      script:
+        - cd ..
+        - Rscript build_package.R
+      # Render the examples under vignettes/ and build the package documentation with 'pkgdown'.
+      # Also install required packages for vignette examples, like glmnet.
