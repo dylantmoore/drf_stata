@@ -1,0 +1,9 @@
+v 3
+d drf_stata - Distributional Random Forests for Stata
+d Wraps the drf C++ library (lorismichel/drf)
+d
+d Distribution-Date: 20260226
+p drf_stata All platforms (macOS, Linux, Windows)
+p drf_stata_mac macOS only (ARM64)
+p drf_stata_linux Linux only (x86_64)
+p drf_stata_win Windows only (x86_64)

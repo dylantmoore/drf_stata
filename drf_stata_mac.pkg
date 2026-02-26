@@ -1,0 +1,14 @@
+v 3
+d drf_stata - Distributional Random Forests for Stata (macOS)
+d
+d Wraps the drf C++ library by Loris Michel and Jeffrey Naef.
+d Implements distributional random forests for conditional distribution
+d estimation and conditional quantile prediction.
+d
+d Requires Stata 14.0 or later.
+d
+d Distribution-Date: 20260226
+d
+f drf.ado
+f drf.sthlp
+f drf_plugin.darwin-arm64.plugin
