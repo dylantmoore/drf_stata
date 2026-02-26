@@ -91,25 +91,23 @@ program define drf, rclass
     display as text "{hline 50}"
     display as text ""
 
-    /* ---- Load plugin (rc=110 means already loaded, which is fine) ---- */
-    capture program drf_plugin, plugin ///
-        using("drf_plugin.darwin-arm64.plugin")
-    if _rc & _rc != 110 {
-        capture program drf_plugin, plugin ///
-            using("drf_plugin.darwin-x86_64.plugin")
-        if _rc & _rc != 110 {
-            capture program drf_plugin, plugin ///
-                using("drf_plugin.linux-x86_64.plugin")
-            if _rc & _rc != 110 {
-                capture program drf_plugin, plugin ///
-                    using("drf_plugin.windows-x86_64.plugin")
-                if _rc & _rc != 110 {
-                    display as error "could not load drf_plugin"
-                    display as error "make sure the .plugin file is installed"
-                    exit 601
+    /* ---- Load plugin ---- */
+    local plugin_loaded 0
+    foreach plat in darwin-arm64 darwin-x86_64 linux-x86_64 windows-x86_64 {
+        if !`plugin_loaded' {
+            capture findfile drf_plugin.`plat'.plugin
+            if _rc == 0 {
+                capture program drf_plugin, plugin using("`r(fn)'")
+                if _rc == 0 | _rc == 110 {
+                    local plugin_loaded 1
                 }
             }
         }
+    }
+    if !`plugin_loaded' {
+        display as error "could not load drf_plugin"
+        display as error "make sure the .plugin file is installed"
+        exit 601
     }
 
     /* ---- Call plugin ---- */
