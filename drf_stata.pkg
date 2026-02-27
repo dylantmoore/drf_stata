@@ -11,6 +11,6 @@ d Distribution-Date: 20260226
 d
 f drf.ado
 f drf.sthlp
-f drf_plugin.darwin-arm64.plugin
-f drf_plugin.linux-x86_64.plugin
-f drf_plugin.windows-x86_64.plugin
+f drf_plugin_macosx.plugin
+f drf_plugin_unix.plugin
+f drf_plugin_windows.plugin

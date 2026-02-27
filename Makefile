@@ -51,9 +51,9 @@ PLUGIN_SRC = drf_plugin_cpp.cpp
 STPLUGIN_SRC = stplugin.c
 
 # Output filenames
-TARGET_DARWIN  = drf_plugin.darwin-arm64.plugin
-TARGET_WINDOWS = drf_plugin.windows-x86_64.plugin
-TARGET_LINUX   = drf_plugin.linux-x86_64.plugin
+TARGET_DARWIN  = drf_plugin_macosx.plugin
+TARGET_WINDOWS = drf_plugin_windows.plugin
+TARGET_LINUX   = drf_plugin_unix.plugin
 
 # ── Darwin (macOS arm64) ─────────────────────────────────────────────
 DARWIN_CXX    = g++
